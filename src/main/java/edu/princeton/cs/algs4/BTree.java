@@ -146,7 +146,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
     /**
      * Inserts the key-value pair into the symbol table, overwriting the old value
      * with the new value if the key is already in the symbol table.
-     * If the value is {@code null}, this effectively deletes the key from the symbol table.
+     * If the value is {@code null}, this effectively deletes the key from the symbol table.  zengliang: why ?? it's wrong from code.
      *
      * @param  key the key
      * @param  val the value
@@ -171,9 +171,9 @@ public class BTree<Key extends Comparable<Key>, Value>  {
         Entry t = new Entry(key, val, null);
 
         // external node
-        if (ht == 0) {
+        if (ht == 0) {//zengliang: i would prefer use if(h.children[0].next == null)
             for (j = 0; j < h.m; j++) {
-                if (less(key, h.children[j].key)) break;
+                if (less(key, h.children[j].key)) break;//zengliang: why not check eq(key, h.children[j].key) ???
             }
         }
 
