@@ -179,7 +179,7 @@ public class BTree<Key extends Comparable<Key>, Value>  {
 
         // internal node
         else {
-            for (j = 0; j < h.m; j++) {
+            for (j = 0; j < h.m; j++) {//zengliang: how to handle case if key < h.children[0].key ???
                 if ((j+1 == h.m) || less(key, h.children[j+1].key)) {
                     Node u = insert(h.children[j++].next, key, val, ht-1);
                     if (u == null) return null;
